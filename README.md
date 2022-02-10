@@ -1,3 +1,26 @@
+# IMAGE-TEXT-App
+![IMG-TEXT](https://i.imgur.com/NRctcaT.png)
+Build an Image to Text Converter App using React.js and Tesseract.js OCR 
+
+## What Is OCR? 
+OCR stands for “Optical Character Recognition” or “Optical Character Reader”. It is used to extract texts from images.
+
+
+## What Is Tesseract.Js? 
+Tesseract.js is a JavaScript library that compiles the original Tesseract from C to JavaScript WebAssembly thereby making OCR accessible in the browser. Tesseract.js engine was originally written in ASM.js and it was later ported to WebAssembly but ASM.js still serves as a backup in some cases when WebAssembly is not supported.
+
+As stated on the website of Tesseract.js, it supports more than 100 languages, automatic text orientation and script detection, a simple interface for reading paragraphs, words and character bounding boxes.
+
+Tesseract is an optical character recognition engine for various operating systems. It is free software, released under the Apache Licence. Hewlett-Packard developed Tesseract as proprietary software in the 1980s. It was released as open source in 2005 and its development has been sponsored by Google since 2006.
+
+The latest version, version 4, of Tesseract was released in October 2018 and it contains a new OCR engine that uses a neural network system based on Long Short-Term Memory (LSTM) and it is meant to produce more accurate results.
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

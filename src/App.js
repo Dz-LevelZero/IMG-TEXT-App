@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { createWorker } from 'tesseract.js';
 import './App.css';
 
@@ -8,13 +8,17 @@ function App() {
 
   const worker = createWorker();
 
-  const convertImageToText = async () => {
+  const convertImageToText = useCallback(async () => {
+    if(!selectedImage) return;
+
     await worker.load();
     await worker.loadLanguage('eng');
     await worker.initialize('eng');
-    const { data: { text } } = await worker.recognize(selectedImage);
-    setTextResult(text);
-  }
+    const { data } = await worker.recognize(selectedImage);
+    setTextResult(data.lines);
+  }, [selectedImage, worker]);
+
+
 
   useEffect(() => {
     if (selectedImage) {
@@ -23,7 +27,12 @@ function App() {
   }, [selectedImage]);
 
   const handleChangeImg = (e) => {
-    setSelectedImage(e.target.files[0]);
+    if(e.target.files[0]) {
+      setSelectedImage(e.target.files[0]);
+    } else {
+      setSelectedImage(null);
+      setTextResult("");
+    }
   }
 
   return (
@@ -42,8 +51,11 @@ function App() {
         )}
         {textResult && (
           <div className="box-p">
-            <p>{textResult}</p>
+          {textResult.map((line, index) => {
+            return <p key={index}>{line.text}</p>
+          })}
           </div>
+          
         )}
       </div>
     </div>
