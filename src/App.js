@@ -11,7 +11,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>IMG-TEXT</h1>
+      <h1>IMG - TEXT</h1>
       <p>Get text from image !</p>
       <div className="input-wrapper">
         <label htmlFor="upload">Upload Image</label>

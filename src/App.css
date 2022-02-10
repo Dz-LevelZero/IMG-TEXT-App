@@ -1,37 +1,76 @@
+body {
+  font-family: sans-serif;
+  background: #3C0D99
+}
+
 .App {
-  text-align: center;
+  max-width: 950px;
+  margin: 0 auto;
+  color: #F7FAFC;
+  font-weight: bold;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App h1 {
+  font-size: 3rem;
+  margin : 4rem 0 0 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-  }
+.App p {
+  font-size: 1.5rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper label {
+  display: inline-block;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  background: #6415FF;
+}
+
+.input-wrapper input[type="file"] {
+  position: absolute;
+  top: 5px;
+  left: 13px;  
+  height: 100%;
+  cursor: pointer;
+  z-index: -1;
+}
+
+.result {
+  margin-top: 4rem;
+  display: grid;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background: #6415FF;
 }
 
-.App-link {
-  color: #61dafb;
+.result .box-image {
+  height: 100%;
+  padding: 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.result .box-p {
+  padding: 1rem;
+  height: 100%;
+}
+
+.result img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.result p {
+  line-height: 1.5rem;
+  font-size: 1rem;
+}
+
+@media (min-width: 1000px) {
+  .result {
+    grid-template-columns: 1fr 1fr;
   }
 }
