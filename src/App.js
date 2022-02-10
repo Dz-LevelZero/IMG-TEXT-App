@@ -1,9 +1,26 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { createWorker } from 'tesseract.js';
 import './App.css';
 
 function App() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [textResult, setTextResult] = useState("");
+
+  const worker = createWorker();
+
+  const convertImageToText = async () => {
+    await worker.load();
+    await worker.loadLanguage('eng');
+    await worker.initialize('eng');
+    const { data: { text } } = await worker.recognize(selectedImage);
+    setTextResult(text);
+  }
+
+  useEffect(() => {
+    if (selectedImage) {
+      convertImageToText();
+    }
+  }, [selectedImage]);
 
   const handleChangeImg = (e) => {
     setSelectedImage(e.target.files[0]);
