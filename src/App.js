@@ -1,23 +1,34 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [textResult, setTextResult] = useState("");
+
+  const handleChangeImg = (e) => {
+    setSelectedImage(e.target.files[0]);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>IMG-TEXT</h1>
+      <p>Get text from image !</p>
+      <div className="input-wrapper">
+        <label htmlFor="upload">Upload Image</label>
+        <input type="file" id="upload" accept='image/*' onChange={handleChangeImg}/>
+      </div>
+      <div className="result">
+        {selectedImage && (
+          <div className='box-image'>
+            <img src={URL.createObjectURL(selectedImage)} alt="selectedImage" />
+          </div>
+        )}
+        {textResult && (
+          <div className="box-p">
+            <p>{textResult}</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
